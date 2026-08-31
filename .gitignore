@@ -2,6 +2,18 @@
 __pycache__/
 *.py[codz]
 *$py.class
+*.pyc
+
+# Local log files and pcap captures
+*.log
+*.pcap
+*.cap
+
+# Local credential/secrets files
+*.env
+config.json
+secrets/
+keys/*.pem
 
 # C extensions
 *.so
