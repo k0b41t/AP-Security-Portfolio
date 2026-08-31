@@ -1,57 +1,70 @@
-#!/usr/bin/env python3
-"""
-===============================================================================
-SCRIPT NAME    : [e.g., simple_port_scanner.py]
-DESCRIPTION    : [Brief explanation of what the script does]
-AUTHOR         : [Your Name]
-DATE CREATED   : [YYYY-MM-DD]
-USAGE          : python3 script_name.py -t <target_ip> -p <port>
+#!/bin/sh
+# ===============================================================================
+# SCRIPT NAME    : [e.g., system_audit.sh]
+# DESCRIPTION    : [Brief explanation of what the script does]
+# AUTHOR         : [Your Name]
+# DATE CREATED   : [YYYY-MM-DD]
+# USAGE          : sh script_name.sh -t <target_ip> -p <port>
+#
+# SECURITY NOTICE:
+# This tool is created for educational and authorized testing purposes ONLY.
+# Do not run this script against target systems without explicit authorization.
+# ===============================================================================
 
-SECURITY NOTICE:
-This tool is created for educational and authorized testing purposes ONLY.
-Do not run this script against target systems without explicit authorization.
-===============================================================================
-"""
+# Safety flag: Exit immediately if any command returns a non-zero (error) status
+set -e
 
-import sys
-import argparse
+# Default variables
+TARGET_IP=""
+PORT="80"
 
-def parse_args():
-    """Parse and validate command-line flags."""
-    parser = argparse.ArgumentParser(
-        description="Educational Security Tool Template",
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter
-    )
-    
-    # Standard security tool flags
-    parser.add_argument(
-        "-t", "--target", 
-        type=str, 
-        required=True, 
-        help="Target IP address or domain"
-    )
-    parser.add_argument(
-        "-p", "--port", 
-        type=int, 
-        default=80, 
-        help="Target port number"
-    )
-    
-    return parser.parse_args()
+# Print usage helper
+usage() {
+    echo "Usage: $0 -t <target_ip> [-p <port>]"
+    echo "  -t  Target IP address or domain (Required)"
+    echo "  -p  Target port number (Default: 80)"
+    echo "  -h  Display this help message"
+    exit 1
+}
 
-def main():
-    args = parse_args()
-    
-    print(f"[*] Initializing security utility against {args.target}:{args.port}...")
-    
+# Portable POSIX option parsing
+while [ $# -gt 0 ]; do
+    case "$1" in
+        -t|--target)
+            TARGET_IP="$2"
+            shift 2
+            ;;
+        -p|--port)
+            PORT="$2"
+            shift 2
+            ;;
+        -h|--help)
+            usage
+            ;;
+        *)
+            echo "[!] Unknown argument: $1"
+            usage
+            ;;
+    esac
+done
+
+# Signal trap for safe exit on Ctrl+C (SIGINT) or termination (SIGTERM)
+cleanup() {
+    echo "\n[!] Process interrupted by user. Exiting safely."
+    exit 0
+}
+trap cleanup INT TERM
+
+main() {
+    # Ensure required arguments are provided
+    if [ -z "$TARGET_IP" ]; then
+        echo "[!] Error: Target IP is required."
+        usage
+    fi
+
+    echo "[*] Initializing security utility against ${TARGET_IP}:${PORT}..."
+
     # Script execution logic here
+}
 
-if __name__ == "__main__":
-    try:
-        main()
-    except KeyboardInterrupt:
-        print("\n[!] Process interrupted by user. Exiting safely.")
-        sys.exit(0)
-    except Exception as e:
-        print(f"[!] Critical Error: {e}", file=sys.stderr)
-        sys.exit(1)
+main "$@"
