@@ -1,7 +1,7 @@
-# AP Security Script Portfolio
-**Student:** k0b41t 
-**Course:** AP Cybersecurity (AP SEC) 
-**Academic Year:** 2026–2027 
+# AP Security Script Portfolio  
+**Student:** k0b41t  
+**Course:** AP Cybersecurity (AP SEC)  
+**Academic Year:** 2026–2027  
 
 ## Overview
 This repository contains a collection of security scripts, automation tools, and lab exercises developed during the AP Cybersecurity curriculum.
