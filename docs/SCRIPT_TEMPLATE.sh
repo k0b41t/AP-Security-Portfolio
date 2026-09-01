@@ -1,5 +1,5 @@
 #!/bin/sh
-# ===============================================================================
+# ==========================================================================================
 # SCRIPT NAME    : [e.g., system_audit.sh]
 # DESCRIPTION    : [Brief explanation of what the script does]
 # AUTHOR         : [Your Name]
@@ -9,7 +9,7 @@
 # SECURITY NOTICE:
 # This tool is created for educational and authorized testing purposes ONLY.
 # Do not run this script against target systems without explicit authorization.
-# ===============================================================================
+# ==========================================================================================
 
 # Safety flag: Exit immediately if any command returns a non-zero (error) status
 set -e
