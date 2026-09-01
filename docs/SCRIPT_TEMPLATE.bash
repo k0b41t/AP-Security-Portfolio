@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
-# ===============================================================================
-# SCRIPT NAME    : [e.g., log_parser.bash]
-# DESCRIPTION    : [Brief explanation of what the script does]
-# AUTHOR         : [Your Name]
-# DATE CREATED   : [YYYY-MM-DD]
-# USAGE          : ./script_name.bash -t <target_ip> -p <ports>
-#
-# SECURITY NOTICE:
-# This tool is created for educational and authorized testing purposes ONLY.
-# Do not run this script against target systems without explicit authorization.
-# ===============================================================================
+#===========================================================================================
+## SCRIPT NAME    : [e.g., log_parser.bash]
+## DESCRIPTION    : [Brief explanation of what the script does]
+## AUTHOR         : [Your Name]
+## DATE CREATED   : [YYYY-MM-DD]
+## USAGE          : ./script_name.bash -t <target_ip> -p <ports>
+##
+## SECURITY NOTICE:
+## This tool is created for educational and authorized testing purposes ONLY.
+## Do not run this script against target systems without explicit authorization.
+#===========================================================================================
 
 # Strict execution flags for safety and debugging:
 # -e: exit on error | -u: treat unset variables as error | -o pipefail: catch pipeline failure
